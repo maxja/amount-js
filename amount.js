@@ -63,5 +63,5 @@ Amount.load_bunch = function(amounts) {
 Amount.load_rates = function(rates) {
   if ( typeof rates !== "object" && !rates instanceof Array )
     throw new Error("Rates must be a set of a sets!");
-  for (var i=0; i < rates.length; this.set_currency.apply(this, rates[i++]));
+  for (var i=0; i < rates.length; this.set_currency.apply(Amount, rates[i++]));
 };
