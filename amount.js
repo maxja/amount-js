@@ -44,6 +44,7 @@ Amount.set_currency = function(name, rate) {
     throw new Error("Rate must be a numerical or undefined!");
   
   var self = this;
+  console.log(self);
   self[name] = function(value) {
     if ( !!this.window || this === self )
       return new self[name](value);
