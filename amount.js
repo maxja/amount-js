@@ -26,7 +26,7 @@ var Amount = function(value, currency, rate) {
     return this;
   };
   this.to_ = function(currency) {
-    if ( currency.rate )
+    if ( !currency.rate )
       throw new Error("Destination must be a Currency itself or amount in that currency!");
     return new Amount(this / currency.rate, currency.currency, currency.rate);
   };
