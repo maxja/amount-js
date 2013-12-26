@@ -4,6 +4,12 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <title>Test</title>
   <script type="text/javascript" charset="utf-8" src="amount.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    Amount.set_currency("USD", 1);
+    var usd1 = Amount.USD(100, "USD");
+    Amount.set_currency("RUB", 0.03333);
+    var rub1 = Amount.RUB(300, "RUB");
+  </script>
 </head>
 <body>
   
