@@ -60,3 +60,8 @@ Amount.load_bunch = function(amounts) {
   for (var i=0,a=[]; i < amounts.length; a.push(this.apply(null, amounts[i++])));
   return a;
 };
+Amount.load_rates = function(rates) {
+  if ( typeof rates !== "object" && !rates instanceof Array )
+    throw new Error("Rates must be a set of a sets!");
+  for (var i=0; i < rates.length; this.set_currency.apply(null, rates[i++])));
+};
