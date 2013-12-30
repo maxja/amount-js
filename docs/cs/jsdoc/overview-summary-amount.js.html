@@ -1,0 +1,339 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Frameset//EN""http://www.w3.org/TR/REC-html40/frameset.dtd">
+<html>
+<head>
+<title>
+ Overview
+</title>
+<link rel ="stylesheet" type="text/css" href="stylesheet.css" title="Style">
+<script>
+function asd() {
+	
+		parent.document.title="amount.js Overview";
+	
+}
+</script>
+</head>
+<body bgcolor="white" onload="asd();">
+
+<!-- ========== START OF NAVBAR ========== -->
+<a name="navbar_top"><!-- --></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td colspan=2 bgcolor="#EEEEFF" class="NavBarCell1">
+<a name="navbar_top_firstrow"><!-- --></a>
+<table border="0" cellpadding="0" cellspacing="3">
+  <tr align="center" valign="top">
+  
+  
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="overview-summary.html"><font class="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td>
+  <td bgcolor="#FFFFFF" class="NavBarCell1Rev">	&nbsp;<font class="NavBarFont1Rev"><b>File</b></font>&nbsp;</td>
+  
+
+  <td bgcolor="#FFFFFF" class="NavBarCell1"> 	<font class="NavBarFont1">Class</font>&nbsp;</td>
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="overview-tree.html"><font class="NavBarFont1"><b>Tree</b></font></a>&nbsp;</td>
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="index-all.html"--><font class="NavBarFont1"><b>Index</b></font></a>&nbsp;</td>
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="help-doc.html"><font class="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+  </tr>
+</table>
+</td>
+<td bgcolor="#EEEEFF" align="right" valign="top">
+<em>
+<b></b></em>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="white" class="NavBarCell2"><font size="-2">
+&nbsp;PREV&nbsp;
+&nbsp;NEXT</font></td>
+<td bgcolor="white" class="NavBarCell2"><font size="-2">
+  <a href="index.html" target="_top"><b>FRAMES</b></a>  &nbsp;
+&nbsp;<a href="overview-summary.html" target="_top"><b>NO FRAMES</b></a>
+&nbsp;&nbsp;
+<script>
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="allclasses-noframe.html" TARGET=""><B>All Classes</B></A>');
+  }
+  //-->
+</script>
+<noscript>
+<a href="allclasses-noframe.html" target=""><b>All Classes</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<!-- =========== END OF NAVBAR =========== -->
+
+<hr>
+<center>
+	
+	   <h2>amount.js</h2>
+	
+</center>
+
+	
+
+
+<h4>Summary</h4>
+<p>
+	
+		This file represents a Amount, Amount[Currency] cunstructors 
+ and it's instance methods.
+ 
+ <BR/><BR/><B>Version: </B>0.0.1<BR/><BR/><B>Author:</B> Maxim P. Kalenich (me@maxja.ru)
+ <BR/>
+	
+</p>
+
+<hr>
+
+
+    <table border="1" cellpadding="3" cellspacing="0" width="100%">
+    <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+    <td colspan=2><font size="+2">
+    
+        <b>Class Summary</b>
+    
+    </font></td>
+    </tr>
+    
+    <tr bgcolor="white" class="TableRowColor">
+    <td width="15%"><b><a href="Amount.html">Amount</a></b></td>
+    <td>This class represents an instance of an Amount.</td>
+    </tr>
+    
+    </table>
+    <hr/> 
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+
+<!-- ========== END METHOD SUMMARY =========== -->
+
+
+        <pre class="sourceview"><span class="comment">/**
+ * <span class="attrib">@fileoverview</span> This file represents a Amount, Amount[Currency] cunstructors 
+ * and it's instance methods.
+ * 
+ * <span class="attrib">@author</span> Maxim P. Kalenich (me<span class="attrib">@maxja</span>.ru)
+ * <span class="attrib">@version</span> 0.0.1
+ */</span>
+
+<span class="comment">/**
+ * Construct a new Amount class.
+ * 
+ * <span class="attrib">@class</span> This class represents an instance of an Amount.
+ * <span class="attrib">@constructor</span>
+ * <span class="attrib">@param</span> {Number} value The amount of money.
+ * <span class="attrib">@param</span> {String} currency The currency short name (3 letter long, up. case).
+ * <span class="attrib">@param</span> {Number|undefined} rate The exchange rate of this currency to base one.
+ * <span class="attrib">@returns</span> A new instance of Amount.
+ * <span class="attrib">@type</span> Amount
+ */</span>
+var Amount = <span class="reserved">function</span>(value, currency, rate) {
+  <span class="reserved">if</span> ( !!<span class="reserved">this</span>.window )
+    <span class="reserved">return</span> new arguments.callee(value, currency, rate);
+  <span class="reserved">if</span> ( typeof value !== <span class="literal">"number"</span> )
+    throw new Error(<span class="literal">"Value must be a numerical!"</span>);
+  <span class="reserved">if</span> ( typeof currency !== <span class="literal">"string"</span> )
+    throw new Error(<span class="literal">"Currency name must be a string!"</span>);
+  <span class="reserved">if</span> ( typeof rate !== <span class="literal">"number"</span> &amp;&amp; !!rate)
+    throw new Error(<span class="literal">"Rate must be a numerical or undefined!"</span>);
+  
+  <span class="comment">/** <span class="attrib">@private</span> */</span> <span class="reserved">this</span>.value = value;
+  <span class="comment">/** <span class="attrib">@private</span> */</span> <span class="reserved">this</span>.currency = currency;
+  <span class="comment">/** <span class="attrib">@private</span> */</span> <span class="reserved">this</span>.rate = rate || 1;
+  
+  <span class="comment">/**
+   * Increment this amount with specified as the parameter.
+   * <span class="attrib">@this</span> {Amount}
+   * <span class="attrib">@param</span> {Number|Amount} amount Incremental amount will be auto-converted to 
+   * the same currency as original amount is represented.
+   * <span class="attrib">@returns</span> Result of increment.
+   * <span class="attrib">@type</span> Amount
+   */</span>
+  <span class="reserved">this</span>.add = <span class="reserved">function</span>(amount) {
+    <span class="reserved">if</span> ( typeof amount !== <span class="literal">"number"</span> &amp;&amp; !amount instanceof Amount)
+      throw new Error(<span class="literal">"Amount must be a numerical!"</span>);
+    <span class="reserved">this</span>.value += amount / <span class="reserved">this</span>.rate;
+    <span class="reserved">return</span> <span class="reserved">this</span>;
+  };
+  
+  <span class="comment">/**
+   * Decrement this amount with specified as the parameter.
+   * <span class="attrib">@this</span> {Amount}
+   * <span class="attrib">@param</span> {Number|Amount} amount Decremental amount will be auto-converted to 
+   * the same currency as original amount is represented.
+   * <span class="attrib">@returns</span> Result of decrement.
+   * <span class="attrib">@type</span> Amount
+   */</span>
+  <span class="reserved">this</span>.odd = <span class="reserved">function</span>(amount) {
+    <span class="reserved">if</span> ( typeof amount !== <span class="literal">"number"</span> &amp;&amp; !amount instanceof Amount)
+      throw new Error(<span class="literal">"Amount must be a numerical!"</span>);
+    <span class="reserved">this</span>.value -= amount / <span class="reserved">this</span>.rate;
+    <span class="reserved">return</span> <span class="reserved">this</span>;
+  };
+  
+  <span class="comment">/**
+   * Convert this amount with specified currency.
+   * <span class="attrib">@this</span> {Amount}
+   * <span class="attrib">@param</span> {Amount|Currency} currency Amount or Currency that represent 
+   * currency with desirable exchange rate. 
+   * <span class="attrib">@returns</span> Сonversion result.
+   * <span class="attrib">@type</span> Amount
+   */</span>
+  <span class="reserved">this</span>.to_ = <span class="reserved">function</span>(currency) {
+    <span class="reserved">if</span> ( !currency.rate )
+      throw new Error(<span class="literal">"Destination must be a Currency itself or amount in that currency!"</span>);
+    <span class="reserved">return</span> new Amount(<span class="reserved">this</span> / currency.rate, currency.currency, currency.rate);
+  };
+};
+
+<span class="comment">/**
+ * Find a String representation of an Amount.
+ * 
+ * <span class="attrib">@override</span>
+ * <span class="attrib">@this</span> {Amount}
+ * <span class="attrib">@returns</span> Human-readable representation of this Amount.
+ * <span class="attrib">@type</span> String
+ */</span>
+Amount.<span class="reserved">prototype</span>.toString = <span class="reserved">function</span>() {
+  <span class="reserved">return</span> <span class="reserved">this</span>.value + <span class="literal">" "</span> + <span class="reserved">this</span>.currency;
+};
+
+<span class="comment">/**
+ * Find a Number representation of an Amount.
+ * 
+ * <span class="attrib">@override</span>
+ * <span class="attrib">@this</span> {Amount}
+ * <span class="attrib">@returns</span> Math-operable representation of this Amount.
+ * <span class="attrib">@type</span> Number
+ */</span>
+Amount.<span class="reserved">prototype</span>.valueOf = <span class="reserved">function</span>() {
+  <span class="reserved">return</span> <span class="reserved">this</span>.value * <span class="reserved">this</span>.rate;
+};
+
+<span class="comment">/**
+ * Bind Currency class to Amount namespace.
+ * 
+ * <span class="attrib">@this</span> {Amount}
+ * <span class="attrib">@param</span> {String} name The currency short name (3 letter long, up. case).
+ * <span class="attrib">@param</span> {Number} rate The exchange rate of this currency to base one.
+ * <span class="attrib">@returns</span> Specified currency Amount builder method.
+ * <span class="attrib">@type</span> Amount[Currency]
+ */</span>
+Amount.set_currency = <span class="reserved">function</span>(name, rate) {
+  <span class="reserved">if</span> ( typeof name !== <span class="literal">"string"</span> )
+    throw new Error(<span class="literal">"Currency name must be a string!"</span>);
+  <span class="reserved">if</span> ( typeof rate !== <span class="literal">"number"</span> &amp;&amp; !!rate)
+    throw new Error(<span class="literal">"Rate must be a numerical or undefined!"</span>);
+  
+  <span class="comment">/** <span class="attrib">@private</span> */</span> var self = <span class="reserved">this</span>;
+  
+  <span class="comment">/**
+   * Construct a new Amount[Currency] class.
+   * 
+   * <span class="attrib">@class</span> This class represents an instance of an Amount[Currency].
+   * <span class="attrib">@constructor</span>
+   * <span class="attrib">@param</span> {Number} value The amount of money.
+   * <span class="attrib">@returns</span> A new instance of Amount.
+   * <span class="attrib">@type</span> Amount
+   */</span>
+  self[name] = <span class="reserved">function</span>(value) {
+    <span class="reserved">if</span> ( !!<span class="reserved">this</span>.window || <span class="reserved">this</span> === self )
+      <span class="reserved">return</span> new self[name](value);
+    self.call(<span class="reserved">this</span>, value, name, rate);
+  };
+  self[name].<span class="reserved">prototype</span> = new self(0, name);
+  self[name].currency = name;
+  self[name].rate = rate;
+  <span class="reserved">return</span> self[name];
+};
+
+<span class="comment">/**
+ * Bunch load amounts set
+ * 
+ * <span class="attrib">@param</span> {Array} amounts Set of sets with {<span class="attrib">@link</span> Amount}'s params in each.
+ * <span class="attrib">@returns</span> Set of Amount objects.
+ * <span class="attrib">@type</span> Array
+ */</span>
+Amount.load_bunch = <span class="reserved">function</span>(amounts) {
+  <span class="reserved">if</span> ( typeof amounts !== <span class="literal">"object"</span> &amp;&amp; !amounts instanceof Array )
+    throw new Error(<span class="literal">"Amounts must be a set of a sets!"</span>);
+  <span class="reserved">for</span> (var i=0,a=[]; i &lt; amounts.length; a.push(<span class="reserved">this</span>.apply(null, amounts[i++])));
+  <span class="reserved">return</span> a;
+};
+
+<span class="comment">/**
+ * Bunch create currency preset
+ * 
+ * <span class="attrib">@param</span> {Array} rates Set of sets with {<span class="attrib">@link</span> Amount#set_currency}'s params 
+ * in each.
+ * <span class="attrib">@return</span> {Void}
+ */</span>
+Amount.load_rates = <span class="reserved">function</span>(rates) {
+  <span class="reserved">if</span> ( typeof rates !== <span class="literal">"object"</span> &amp;&amp; !rates instanceof Array )
+    throw new Error(<span class="literal">"Rates must be a set of a sets!"</span>);
+  <span class="reserved">for</span> (var i=0; i &lt; rates.length; <span class="reserved">this</span>.set_currency.apply(<span class="reserved">this</span>, rates[i++]));
+};</pre>
+	<hr>
+
+
+
+<!-- ========== START OF NAVBAR ========== -->
+<a name="navbar_top"><!-- --></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td colspan=2 bgcolor="#EEEEFF" class="NavBarCell1">
+<a name="navbar_top_firstrow"><!-- --></a>
+<table border="0" cellpadding="0" cellspacing="3">
+  <tr align="center" valign="top">
+  
+  
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="overview-summary.html"><font class="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td>
+  <td bgcolor="#FFFFFF" class="NavBarCell1Rev">	&nbsp;<font class="NavBarFont1Rev"><b>File</b></font>&nbsp;</td>
+  
+
+  <td bgcolor="#FFFFFF" class="NavBarCell1"> <font class="NavBarFont1">Class</font>&nbsp;</td>
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="overview-tree.html"><font class="NavBarFont1"><b>Tree</b></font></a>&nbsp;</td>
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="index-all.html"--><font class="NavBarFont1"><b>Index</b></font></a>&nbsp;</td>
+  <td bgcolor="#EEEEFF" class="NavBarCell1">    <a href="help-doc.html"><font class="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+  </tr>
+</table>
+</td>
+<td bgcolor="#EEEEFF" align="right" valign="top"><em>
+<b></b></em>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="white" class="NavBarCell2"><font size="-2">
+&nbsp;PREV&nbsp;
+&nbsp;NEXT</font></td>
+<td bgcolor="white" class="NavBarCell2"><font size="-2">
+  <a href="index.html" target="_top"><b>FRAMES</b></a>  &nbsp;
+&nbsp;<a href="overview-summary.html" target="_top"><b>NO FRAMES</b></a>
+&nbsp;&nbsp;
+<script>
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="allclasses-noframe.html" TARGET=""><B>All Classes</B></A>');
+  }
+  //-->
+</script>
+<noscript>
+<a href="allclasses-noframe.html" target=""><b>All Classes</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<!-- =========== END OF NAVBAR =========== -->
+
+<hr>
+<font size="-1">
+
+</font>
+<div class="jsdoc_ctime">Documentation generated by <a href="http://jsdoc.sourceforge.net/" target="_parent">JSDoc</a> on Tue Dec 31 00:12:16 2013</div>
+</body>
+</html>
