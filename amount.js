@@ -33,6 +33,7 @@ var Amount = function(value, currency, rate) {
   
   /**
    * Increment this amount with specified as the parameter.
+   * 
    * @this {Amount}
    * @param {Number|Amount} amount Incremental amount will be auto-converted to 
    * the same currency as original amount is represented.
@@ -48,6 +49,7 @@ var Amount = function(value, currency, rate) {
   
   /**
    * Decrement this amount with specified as the parameter.
+   * 
    * @this {Amount}
    * @param {Number|Amount} amount Decremental amount will be auto-converted to 
    * the same currency as original amount is represented.
@@ -63,6 +65,7 @@ var Amount = function(value, currency, rate) {
   
   /**
    * Convert this amount with specified currency.
+   * 
    * @this {Amount}
    * @param {Amount|Currency} currency Amount or Currency that represent 
    * currency with desirable exchange rate. 
