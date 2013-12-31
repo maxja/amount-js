@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Amount QUnit tests</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css" type="text/css" media="screen" title="QUnit CSS" charset="utf-8">
+  <script type="text/javascript" charset="utf-8" src="http:////code.jquery.com/qunit/qunit-1.12.0.js"></script>
+  <script type="text/javascript" charset="utf-8" src="amount.js"></script>
+  <script type="text/javascript" charset="utf-8">
+  test( "Amount tests", function() {
+    var usd = Amount(100, "USD", 1);
+    ok( !!usd, "usd amount is created Amount(100, \"USD\", 1)" );
+    equal( usd, 100, "amount of 100 USD (rate = 1) equal to numeric 100" );
+    Amount.set_currency("RUB", 0.03045);
+    ok( !!Amount.RUB, "RUB currency is binded Amount.set_currency(\"RUB\", 0.03045)" );
+    var rub = usd.to_(Amount.RUB);
+    ok( !!rub, "usd amount (" + usd.toString() + ") converted to RUB and saved to rub variable usd.to_(Amount.RUB)" );
+    ok( rub*1 == usd*1, "rub (" + rub.toString() + ") and usd (" + usd.toString() + ") variable holds the same amount but in different currency" );
+  } );
+  </script>
+</head>
+<body id="amount.qunit">
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+</body>
