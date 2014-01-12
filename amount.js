@@ -3,9 +3,10 @@
  * and it's instance methods.
  * 
  * @author Maxim P. Kalenich (me@maxja.ru)
- * @version 0.0.1
+ * @version 0.0.2
  */
-
+ 
+;(function() {
 /**
  * Construct a new Amount class.
  * 
@@ -30,53 +31,6 @@ var Amount = function(value, currency, rate) {
   /** @private */ this.value = value;
   /** @private */ this.currency = currency;
   /** @private */ this.rate = rate || 1;
-  
-  /**
-   * Increment this amount with specified as the parameter.
-   * 
-   * @this {Amount}
-   * @param {Number|Amount} amount Incremental amount will be auto-converted to 
-   * the same currency as original amount is represented.
-   * @returns Result of increment.
-   * @type Amount
-   */
-  this.add = function(amount) {
-    if ( typeof amount !== "number" && !amount instanceof Amount)
-      throw new Error("Amount must be a numerical!");
-    this.value += amount / this.rate;
-    return this;
-  };
-  
-  /**
-   * Decrement this amount with specified as the parameter.
-   * 
-   * @this {Amount}
-   * @param {Number|Amount} amount Decremental amount will be auto-converted to 
-   * the same currency as original amount is represented.
-   * @returns Result of decrement.
-   * @type Amount
-   */
-  this.odd = function(amount) {
-    if ( typeof amount !== "number" && !amount instanceof Amount)
-      throw new Error("Amount must be a numerical!");
-    this.value -= amount / this.rate;
-    return this;
-  };
-  
-  /**
-   * Convert this amount with specified currency.
-   * 
-   * @this {Amount}
-   * @param {Amount|Currency} currency Amount or Currency that represent 
-   * currency with desirable exchange rate. 
-   * @returns Сonversion result.
-   * @type Amount
-   */
-  this.to_ = function(currency) {
-    if ( !currency.rate )
-      throw new Error("Destination must be a Currency itself or amount in that currency!");
-    return new Amount(this / currency.rate, currency.currency, currency.rate);
-  };
 };
 
 /**
@@ -102,6 +56,54 @@ Amount.prototype.toString = function() {
 Amount.prototype.valueOf = function() {
   return this.value * this.rate;
 };
+
+/**
+ * Increment this amount with specified as the parameter.
+ * 
+ * @this {Amount}
+ * @param {Number|Amount} amount Incremental amount will be auto-converted to 
+ * the same currency as original amount is represented.
+ * @returns Result of increment.
+ * @type Amount
+ */
+Amount.prototype.add = function(amount) {
+  if ( typeof amount !== "number" && !amount instanceof Amount)
+    throw new Error("Amount must be a numerical!");
+  this.value += amount / this.rate;
+  return this;
+};
+
+/**
+ * Decrement this amount with specified as the parameter.
+ * 
+ * @this {Amount}
+ * @param {Number|Amount} amount Decremental amount will be auto-converted to 
+ * the same currency as original amount is represented.
+ * @returns Result of decrement.
+ * @type Amount
+ */
+Amount.prototype.odd = function(amount) {
+  if ( typeof amount !== "number" && !amount instanceof Amount)
+    throw new Error("Amount must be a numerical!");
+  this.value -= amount / this.rate;
+  return this;
+};
+
+/**
+ * Convert this amount with specified currency.
+ * 
+ * @this {Amount}
+ * @param {Amount|Currency} currency Amount or Currency that represent 
+ * currency with desirable exchange rate. 
+ * @returns Сonversion result.
+ * @type Amount
+ */
+Amount.prototype.to_ = function(currency) {
+  if ( !currency.rate )
+    throw new Error("Destination must be a Currency itself or amount in that currency!");
+  return new Amount(this / currency.rate, currency.currency, currency.rate);
+};
+
 
 /**
  * Bind Currency class to Amount namespace.
@@ -166,3 +168,7 @@ Amount.load_rates = function(rates) {
     throw new Error("Rates must be a set of a sets!");
   for (var i=0; i < rates.length; this.set_currency.apply(this, rates[i++]));
 };
+
+window.Amount = Amount;
+
+})();
